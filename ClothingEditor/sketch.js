@@ -14,10 +14,10 @@ function preload() {
 }
 
 function setup() {
-  paintingLayer = createGraphics(800, 600);
+  paintingLayer = createGraphics(windowWidth, windowHeight);
   paintingLayer.clear();
 
-  createCanvas(800, 600);
+  createCanvas(windowWidth, windowHeight);
   img.resize(img.width / 0.5, img.height / 0.5);
 
   createColorPickerUI();
@@ -62,8 +62,8 @@ function draw() {
     }
   }
   copyCanvas.updatePixels();
-
-  image(copyCanvas, 150, 20);
+  imageMode(CENTER);
+  image(copyCanvas, windowWidth/2, windowHeight/2);
   textSize(12);
   text('Hotkeys: A - Draw, S - Star, D - Sticker 1, F - Sticker 2, G - Sticker 3, H - Sitcker 4, Left Arrow - Reset', width/2, height);
   
@@ -105,7 +105,7 @@ function draw() {
 }
 
 function createColorPickerUI() {
-  let colorPickerContainer = createDiv("Colour:");
+  let colorPickerContainer = createDiv("Colour: ");
   colorPickerContainer.style("position", "absolute");
   colorPickerContainer.style("bottom", "10px");
   colorPickerContainer.style("left", "10px");
@@ -122,9 +122,9 @@ function createColorPickerUI() {
 }
 
 function createBrushColorPickerUI() {
-  let colorBrushPickerContainer = createDiv("Brush Colour:");
+  let colorBrushPickerContainer = createDiv("Brush Colour: ");
   colorBrushPickerContainer.style("position", "absolute");
-  colorBrushPickerContainer.style("top", "10px");
+  colorBrushPickerContainer.style("bottom", "40px");
   colorBrushPickerContainer.style("right", "10px");
   colorBrushPickerContainer.style("font-family", "Arial");
   colorBrushPickerContainer.style("font-size", "18px");
@@ -171,3 +171,5 @@ function drawStar(x, y, radius1, radius2, npoints) {
   }
   paintingLayer.endShape(CLOSE);
 }
+
+
