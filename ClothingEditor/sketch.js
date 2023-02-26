@@ -1,5 +1,5 @@
 let img, butterfly, image1, image2, image3;
-let selectedColor = [255,255,255];
+let selectedColor = [255, 255, 255];
 let selectedBrushColor = [0, 0, 0];
 let brushSize = 10;
 let paintingLayer;
@@ -63,44 +63,70 @@ function draw() {
   }
   copyCanvas.updatePixels();
   imageMode(CENTER);
-  image(copyCanvas, windowWidth/2, windowHeight/2);
+  image(copyCanvas, windowWidth / 2, windowHeight / 2);
   textSize(12);
-  text('Hotkeys: A - Draw, S - Star, D - Sticker 1, F - Sticker 2, G - Sticker 3, H - Sitcker 4, Left Arrow - Reset', width/2, height);
+  text(
+    "Hotkeys: A - Draw, S - Star, D - Sticker 1, F - Sticker 2, G - Sticker 3, H - Sitcker 4, Left Arrow - Reset",
+    width / 2,
+    height
+  );
   
-
-  image(paintingLayer, 0, 0);
+  imageMode(CENTER);
+  image(paintingLayer,windowWidth/2, windowHeight /2);
 
   if (mouseIsPressed === true) {
-    if (key == 'a'){
+    if (key == "a") {
       paintingLayer.stroke(selectedBrushColor);
       paintingLayer.strokeWeight(brushSize);
       paintingLayer.line(mouseX, mouseY, pmouseX, pmouseY);
     }
-    if (key == 's'){
+    if (key == "s") {
       paintingLayer.stroke(selectedBrushColor);
       paintingLayer.strokeWeight(brushSize);
       //paintingLayer.line(mouseX, mouseY, pmouseX, pmouseY);
-      drawStar(mouseX, mouseY, 10, 6, 6)
+      drawStar(mouseX, mouseY, 10, 6, 6);
     }
-    if (key == 'd'){
-      paintingLayer.image(butterfly, mouseX-40, mouseY-40, brushSize*10, brushSize*10);
+    if (key == "d") {
+      paintingLayer.image(
+        butterfly,
+        mouseX,
+        mouseY,
+        brushSize * 10,
+        brushSize * 10
+      );
     }
-    if (key == 'f'){
-      paintingLayer.image(image1, mouseX-40, mouseY-40, brushSize*10, brushSize*10);
+    if (key == "f") {
+      paintingLayer.image(
+        image1,
+        mouseX - 40,
+        mouseY - 40,
+        brushSize * 10,
+        brushSize * 10
+      );
     }
-    if (key == 'g'){
-      paintingLayer.image(image2, mouseX-40, mouseY-40, brushSize*10, brushSize*10);
+    if (key == "g") {
+      paintingLayer.image(
+        image2,
+        mouseX - 40,
+        mouseY - 40,
+        brushSize * 10,
+        brushSize * 10
+      );
     }
-    if (key == 'h'){
-      paintingLayer.image(image3, mouseX-40, mouseY-40, brushSize*10, brushSize*10);
+    if (key == "h") {
+      paintingLayer.image(
+        image3,
+        mouseX - 40,
+        mouseY - 40,
+        brushSize * 10,
+        brushSize * 10
+      );
     }
-    
-    
   }
   if (keyIsDown(LEFT_ARROW)) {
-      console.log("test");
-      paintingLayer.clear();
-      background(255);
+    console.log("test");
+    paintingLayer.clear();
+    background(255);
   }
 }
 
@@ -171,5 +197,3 @@ function drawStar(x, y, radius1, radius2, npoints) {
   }
   paintingLayer.endShape(CLOSE);
 }
-
-
