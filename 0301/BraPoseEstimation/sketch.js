@@ -14,7 +14,8 @@ function preload() {
 
 function setup() {
   // Create a canvas
-  createCanvas(640, 480);
+  var canvas = createCanvas(640, 480);
+  canvas.parent('virtual');
 
   // Start capturing video from the webcam
   video = createCapture(VIDEO);
